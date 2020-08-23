@@ -2,12 +2,15 @@ from django.views import View
 from accounts.models import CustomUser
 from accounts.forms import ProfileForm
 from django.shortcuts import render, redirect
+from allauth.account import views
 
 # Create your views here.
+class LoginView(views.LoginView):
+    template_name = 'accounts/login.html'
+
 class ProfileView(View):
     def get(self, request, *args, **kwargs):
         user_data = CustomUser.objects.get(id=request.user.id)
-        print(request.user.id)
 
         return render(request, 'accounts/profile.html', {
             'user_data': user_data,
