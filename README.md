@@ -1,1 +1,1 @@
-# customuser-test
+# django-ec
